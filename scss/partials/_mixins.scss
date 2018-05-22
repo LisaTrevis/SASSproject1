@@ -1,3 +1,21 @@
+@mixin blue-beans {
+	@if $brand == blue-beans {
+		@content;
+	}	
+}
+
+@mixin rogers-rovers {
+	@if $brand == rogers-rovers {
+		@content;
+	}	
+}
+
+@mixin pastry-pizza {
+	@if $brand == pastry-pizza {
+		@content;
+	}	
+}
+
 @mixin tiny-screens () {
 	@media only screen and (max-width: 320px) {
 		@content;
@@ -25,12 +43,16 @@
 @mixin google-font($font) {
 	$font: unquote($font);
 	// We use interpolation to make sure the preprocessor knows that $font is a variable and not just part of the string url using the "#" and {}. This is only useable with import statements of css, not scss.
-	@import url(https://fonts.googleapis.com/css?family=#{$font})
+	@import url(https://fonts.googleapis.com/css?family=#{$font});
 }
 
 @mixin warning {
-	background-color: orange;
+	background-color: $button-color;
 	color: #fff;
+
+	&:hover {
+		background-color: lighten($hover-btn-color, 10%);
+	}
 }
 
 // var args:

@@ -1,0 +1,18 @@
+@function sum($left, $right) {
+	@return $left + $right;
+}
+
+@function em($pixels, $context: 16px) {
+	// multiplying by 1em gives us a unit of measurement
+	@return ($pixels / $context) * 1em;
+}
+
+@function col-width($columns: 12, $page-width: 100%, $gap: 1%) {
+	
+	@return ($page-width - $gap*($columns - 1)) / $columns;
+}
+
+// takes the unit of measurement off, so 2px returns 2
+@function strip-unit($value) {
+	@return $value / ($value*0 + 1);
+}
